@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #main {
+            margin-left : 334px;
+            margin-top : 380px;
+            width: 600px; 
+        }
+        h2 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin : 21px 0px;
+        }
+        table {
+            border :1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        td {
+            border : 1px solid black;
+        }
+        td:nth-child(1) {
+            width : 47px;
+            height : 41px;
+            font-weight: bold;
+        }
+        td:nth-child(2) {
+            width : 500px;
+        }
+        td:nth-child(3) {
+            width : 49px;
+        }
+        tr:nth-child(1) > td{
+            background-color: #EEEEEE;
+            font-weight: bold;
+            font-family: '돋움';
+        }
+
+        .sec {
+            width: 430px;
+            height: 25px;
+        }
+        .sec:read-only {
+            background-color: #EEEEEE;
+            cursor:not-allowed;
+        }
+        
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div id = "main">
+        <h2>입력하기</h2>
+        <table>
+            <tr>
+                <td>번호</td>
+                <td>입력</td>
+                <td>잠금</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><input type="text" name = "txt1" class = "sec" data-index = "0" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c1" data-index = "0"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><input type="text" name = "txt2" class = "sec" data-index = "1" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c2" data-index = "1"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><input type="text" name = "txt3" class = "sec" data-index = "2" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c3" data-index = "2"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><input type="text" name = "txt4" class = "sec" data-index = "3" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c4" data-index = "3"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><input type="text" name = "txt5" class = "sec" data-index = "4" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c5" data-index = "4"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><input type="text" name = "txt6" class = "sec" data-index = "5" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c6" data-index = "5"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><input type="text" name = "txt7" class = "sec" data-index = "6" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c7" data-index = "6"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><input type="text" name = "txt8" class = "sec" data-index = "7" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c8" data-index = "7"></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td><input type="text" name = "txt9" class = "sec" data-index = "8" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c9" data-index = "8"></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td><input type="text" name = "txt10" class = "sec" data-index = "9" autocomplete="off"></td>
+                <td><input type="checkbox" name = "c10" data-index = "9"></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <script>
+
+        var list1 = new Array();
+        var list2 = new Array();
+
+        for (var i = 1; i <= 10; i++) {
+            list1[i-1] = document.all["txt" + i];
+            list2[i-1] = document.all["c" + i];
+        }
+
+        for (var i = 1; i <= 10; i++) {
+
+            list2[i-1].onchange = function() {
+
+                check1(event.srcElement);
+
+            }
+
+            list1[i-1].ondblclick = function() {
+                
+                var index = event.srcElement.dataset["index"];
+                check2(list2[index]);
+
+            }
+        }
+
+        
+
+        function check1(object) {
+            var index = object.dataset["index"];
+            
+                if (object.checked) {
+                    list1[index].readOnly = true;
+                } else {
+                    list1[index].readOnly = false;
+                }
+        }
+        
+
+        function check2(object) {
+            var index = object.dataset["index"];
+            
+                if (object.checked) {
+                    list1[index].readOnly = false;
+                    object.checked = false;
+                } else {
+                    list1[index].readOnly = true;
+                    object.checked = true;
+                }
+        }
+
+    </script>
+
+
+
+
+
+</body>
+</html>
