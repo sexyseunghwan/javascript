@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+	#tbl1 {
+		border: 20px solid #ccc;
+		border-collapse: collapse;
+		margin: 0px auto;
+	}
+	#tbl1 td {
+		border: 1px solid #ccc;
+		padding: 20px;
+	}
+	#tbl1 td img {
+		width: 128px;
+		height: 128px;
+		border: 1px solid #A9A9A9;
+		border-radius: 4px;
+		padding: 5px;
+		background-color: #eee;
+	}
+	#money {
+		width: 60px;
+		text-align: right;
+		padding: 5px;
+	}
+	#btn1 {
+		display: block;
+		margin-left: 16px;
+		margin-top: 5px;
+		width: 74px;
+		height: 60px;
+	}
+	#tbl1 .item {
+		text-align: center;
+	}
+	#tbl1 .item span:first-child {
+		margin-right: 20px;
+	}
+	#tbl1 .item img {
+		width: 50px;
+		height: 50px;
+	}
+</style>
+</head>
+<body>
+    	<table id="tbl1">
+		<tr>
+			<td>
+				<img src="../images/catty01.png" name="img1">
+				<img src="../images/catty02.png" name="img2">
+				<img src="../images/catty03.png" name="img3">
+			</td>
+			<td>
+				$ <input type="text" name="money" id="money" value = "10000" readonly="readonly">
+				<input type="button" value="$" name="btn1" id="btn1">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="item">
+					<span name="score">
+					<img src="../images/catty01.png">
+					<img src="../images/catty01.png">
+					<img src="../images/catty01.png">
+					x 2
+					</span>
+					<span name="score">
+					<img src="../images/catty02.png">
+					<img src="../images/catty02.png">
+					<img src="../images/catty02.png">
+					x 3
+					</span>
+				</div>
+				<div class="item">
+					<span name="score">
+					<img src="../images/catty03.png">
+					<img src="../images/catty03.png">
+					<img src="../images/catty03.png">
+					x 4
+					</span>
+					<span name="score">
+					<img src="../images/catty04.png">
+					<img src="../images/catty04.png">
+					<img src="../images/catty04.png">
+					x 5
+					</span>
+				</div>
+				<div class="item">
+					<span name="score">
+					<img src="../images/catty05.png">
+					<img src="../images/catty05.png">
+					<img src="../images/catty05.png">
+					x 6
+					</span>
+					<span name="score">
+					<img src="../images/catty01.png">
+					<img src="../images/catty01.png">
+					<img src="../images/catty02.png">
+					x 7
+					</span>
+				</div>
+				<div class="item">
+					<span name="score">
+					<img src="../images/catty01.png">
+					<img src="../images/catty02.png">
+					<img src="../images/catty03.png">
+					x 8
+					</span>
+					<span name="score">
+					<img src="../images/catty02.png">
+					<img src="../images/catty03.png">
+					<img src="../images/catty04.png">
+					x 9
+					</span>
+				</div>
+			</td>
+		</tr>
+    </table>
+    
+    <script>
+        var img1 = document.images.img1;
+        var img2 = document.images.img2;
+        var img3 = document.images.img3;
+
+        var btn1 = document.all.btn1;//버튼
+        var money = document.all.money;//돈
+        
+        var go = false;
+        var timer = 0;
+
+
+		var list = [[1,1,1,2],[2,2,2,3],[3,3,3,4],[4,4,4,5],[5,5,5,6],[1,1,2,7],[1,2,3,8],[2,3,4,9]];
+		
+        
+        btn1.onmousedown = function() {
+ 
+
+            if (go == false) {//멈춰있는 경우
+                money.value -=100;
+
+                timer =  setInterval(function(){
+                    var num1 = parseInt((Math.random()*5)+1);
+                    var num2 = parseInt((Math.random()*5)+1);
+                    var num3 = parseInt((Math.random()*5)+1);
+
+                    img1.src = "../images/catty0" + num1 + ".png";
+                    img2.src = "../images/catty0" + num2 + ".png";
+                    img3.src = "../images/catty0" + num3 + ".png";
+
+                    go = true;
+
+
+                },100)
+
+
+            } else {//돌아가고 있는 경우
+             
+                    // console.log(img1.src.substr(35,1));
+                    // console.log(img2.src.substr(35,1));
+                    // console.log((img3.src).substr(35,1));
+
+					var newlist = [img1.src.substr(35,1),img2.src.substr(35,1),(img3.src).substr(35,1)];
+					
+					console.log(newlist[0]);
+					console.log(newlist[1]);
+					console.log(newlist[2]);
+
+					
+
+					for (var i = 0; i < list.length; i++) {
+						if ((newlist[0] == list[i][0]) && (newlist[1] == list[i][1]) && (newlist[2] == list[i][2])) {
+							money.value =  parseInt(money.value) + (list[i][3]*100);	
+						}
+					}
+                
+                if (money.value == 0) {//돈이 없는경우
+                    btn1.disabled = true;
+                    clearInterval(timer);
+                    go = false;
+                } else {//돈이 없지는 않는경우
+                    clearInterval(timer);
+                    go = false; 
+                }
+                
+
+
+        }
+    }
+
+
+        
+        
+
+
+    </script>
+
+
+
+</body>
+</html>
