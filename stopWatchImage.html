@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #timer {
+            /* border : 1px solid black; */
+            width : 800px;
+            height : 203px;
+            margin : 200px auto;
+            padding:25px;
+        }
+        span{
+            font-size: 123px;
+        }
+        #btns input {
+		border: 1px solid #aaa;
+        /* border : 1px solid red; */
+		background-color: white;
+		width: 15%;
+		height: 50px;
+		outline: none;
+		cursor: pointer;
+	    }
+    	#btns input:disabled {
+		background-color: #eee;
+		cursor: not-allowed;
+	    }
+
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div id = "timer">
+        <img src="../images/0.png" alt="" name = "img1" data-index = "0">
+        <img src="../images/0.png" alt="" name = "img2" data-index = "1">
+        <span>:</span>
+        <img src="../images/0.png" alt="" name = "img3" data-index = "2">
+        <img src="../images/0.png" alt="" name = "img4" data-index = "3">
+        <span>:</span>
+        <img src="../images/0.png" alt="" name = "img5" data-index = "4">
+        <img src="../images/0.png" alt="" name = "img6" data-index = "5">
+        <div id = "btns">
+            <input type="button" value = "시작" name = "btn1" class = "btns">
+            <input type="button" value = "멈춤" name = "btn2" class = "btns" disabled>
+            <input type="button" value = "종료" name = "btn3" class = "btns" disabled>
+        </div>
+    </div>
+
+  
+
+    <script>
+        var btn1 = document.all.btn1;
+        var btn2 = document.all.btn2;
+        var btn3 = document.all.btn3;
+        
+        var images = document.images;//리스트로 만들어질것 -> 이미지 리스트
+
+        var timer = 0;
+        var min = 0;
+        var sec = 0;
+        var milsec = 0;
+
+        var timer = 0;
+
+        btn1.onmousedown = function() {//시작버튼 누른 경우
+            // console.log("123");
+            event.srcElement.disabled = true; 
+            btn2.disabled = false;
+            btn3.disabled = false;
+
+            timer = setInterval(function(){
+                
+                
+                printms(min,0);
+                printms(sec,2);
+                printms(milsec,4);
+                // console.log(milsec);
+
+                
+                milsec++;
+
+                if (milsec == 100) {
+                    milsec = 0;
+                    sec++;
+                }
+
+                if (sec == 60) {
+                    sec = 0;
+                    min++;
+                }
+
+            },10)
+
+        }
+
+        btn2.onmousedown = function() {//멈춤버튼 누른경우
+            event.srcElement.disabled = true;
+            btn1.disabled = false;
+
+            clearInterval(timer);
+        }
+
+        btn3.onmousedown = function() {//종료버튼 누른경우
+            event.srcElement.disabled = true;
+            btn2.disabled = true;
+            btn1.disabled = false;
+
+            clearInterval(timer);
+            min = 0;
+            sec = 0;
+            milsec = 0;
+            printms(min,0);
+            printms(sec,2);
+            printms(milsec,4);
+
+            timer = 0;
+
+        }
+
+    function printms(num,n) {
+
+        if (num < 10) {
+            images[n].src = "../images/0.png";
+            images[n+1].src = "../images/" + num + ".png";
+        } else {
+            var ten = parseInt(num / 10);
+            var zero = num % 10;
+
+            images[n].src = "../images/" + ten + ".png";
+            images[n+1].src = "../images/" + zero + ".png";
+
+        }
+    }
+
+
+    </script>
+
+
+</body>
+</html>

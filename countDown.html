@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #main {
+            width : 800px;
+            height : 233px;
+            /* border : 1px solid black; */
+            margin : 100px 273px;
+        }
+
+        #txt {
+            margin-left : 230px;
+            width : 254px;
+            height : 225px;
+            text-align: center;
+            font-size: 10em;
+            font-weight:bold;
+            border: 0px solid black;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+
+    <div id = "main">
+        <form name = "form1">
+            <input type="text" value = "" id = "txt" name = "txt1" readonly="readonly">
+        </form>
+    </div>
+
+
+    <script>
+        var n = 11;
+        var txt1 = document.form1.txt1;
+
+
+        
+        var timer = setInterval(function(){
+            n--;
+            txt1.value = n;
+            
+            // console.log(n);
+
+            if (n == 0) {
+                location.href = "http://google.com";
+            } 
+
+            },500);
+
+        window.onkeydown = function() {
+
+            if (event.keyCode  == 27) {
+                clearInterval(timer);
+                document.body.bgColor = "orange";
+            }          
+        }
+
+            
+
+            
+    
+        
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+
+        #list {
+            /* border : 1px solid black; */
+            margin : 300px 100px;
+        }
+
+	    #list > button {
+		    font-size: 2.5em;
+		    padding: 15px;
+		    width: 100px;
+		    height: 100px;
+		    border: 1px solid #ccc;
+	    }
+	    #list > button:enabled {
+		    background-color: white;
+	    }
+	    #list > button:disabled {
+		    background-color: #bbb;			
+	    }
+</style>
+
+
+</head>
+<body>
+        
+	<div id="list">
+		<button type="button" name="btn"><i class="fas fa-dog"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-paw"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-bone"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-frog"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-cat"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-piggy-bank"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-horse"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-dove"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-drumstick-bite"></i></button>
+		<button type="button" name="btn" disabled><i class="fas fa-fish"></i></button>
+    </div>
+    
+    <script>
+
+        var list = document.all.btn;//배열 생성
+        var n = 1;
+
+        var timer = setInterval(function(){
+            
+            console.log(n);
+            
+            if (n == 1) {
+                list[9].disabled = true;
+                list[n-1].disabled = false;
+            }  else {
+                list[n-2].disabled = true;
+                list[n-1].disabled = false;
+            }
+            n++;
+            if (n == 11) {
+                n = 1;
+            }
+        },200);
+
+
+        for (var i = 0; i < list.length; i++) {
+            list[i].onclick = function() {
+                clearInterval(timer);
+                document.body.bgColor = "cornflowerblue";
+            }
+
+
+        }
+
+
+
+        list[0].onclick = function() {
+            console.log("asd");
+            clearInterval(timer);
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
