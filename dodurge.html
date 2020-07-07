@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+	    #tbl1 {
+		    border: 1px solid #A9A9A9;
+		    border-collapse: collapse;
+		    margin: 50px auto;
+	    }
+	    #tbl1 td {
+		    border: 1px solid #A9A9A9;
+		    width: 150px;
+		    height: 150px;
+		    font-size: 5em;
+		    font-weight: bold;
+		    text-align: center;
+		    cursor: pointer;
+		    color: #444;
+	    }
+	    #tbl1 td img {
+		    display: block;
+	    }
+        
+        #title, #coin {
+            margin-left : 500px;
+        }
+
+    </style>
+
+
+
+
+</head>
+<body oncontextmenu="return false;">
+
+        <div id = "title" style = "font-size : 3em;">두더쥐 게임</div>
+        <input id = "coin" type="text" value = "0" readonly="readonly">
+
+    	<table id="tbl1">
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>			
+			<td class="cell"></td>			
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>			
+			<td class="cell"></td>			
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>			
+			<td class="cell"></td>			
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>			
+			<td class="cell"></td>			
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>			
+			<td class="cell"></td>			
+		</tr>
+    </table>
+    
+    <script>
+        var tr = document.getElementById("tbl1").firstElementChild.children;
+
+        console.log(tr[0].children[1].innerHTML);
+
+        var index;
+
+        setInterval(function(){
+
+            index = parseInt((Math.random()*30));//랜덤함수
+
+            //행구분 함수를 만들어줘야 한다.
+
+            var rowtxt = row1(index); 
+            var coltxt = col1(index);
+
+            tr[rowtxt].children[coltxt].innerHTML = "<img src = '../images/catty01.png'>";
+
+        },1000);
+
+
+        function row1(num) {
+            return parseInt(num/6); 
+        }
+
+        function col1(num) {
+            return num%6; 
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>
