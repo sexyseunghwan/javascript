@@ -40,46 +40,116 @@
         var row = 2;
         var col = 2;
 
-        var list = [];//빈 리스트 생성
+        var num = 1;
+        // var list = [];//빈 리스트 생성
 
         window.onkeydown = function() {
-                //  clear();
+            //  clear();
             // tbody1.innerHTML = "";
 
-            if (event.keyCode == 37) {//왼쪽
-                
 
+
+            // if(col >= 1 || row >= 1) {
+                
+                if (event.keyCode == 37 && (col > 1)) {//왼쪽
+                    
+                    num = 1;
+                    tbody1.innerHTML = "";
+
+                    col -= 1;
+
+                    for (var i = 0; i < row; i++) {
+                    
+                        var tr = document.createElement("tr");
+
+                            for (var j = 0; j < col; j++) {
+
+                                var td = document.createElement("td");
+                                td.innerHTML = num;
+                                tr.appendChild(td);
+                                num++;
+
+                            }
+                    tbody1.appendChild(tr);
+                }
          
-            } else if (event.keyCode == 39) {//오른쪽
-                
-                tbody1.innerHTML = "";
-                list = [];
+                } else if (event.keyCode == 39) {//오른쪽
+                    num = 1;
+                    tbody1.innerHTML = "";
 
-                // for (var i = 0; i < )
+                    col += 1;
+
+                    for (var i = 0; i < row; i++) {
+                    
+                        var tr = document.createElement("tr");
+
+                            for (var j = 0; j < col; j++) {
+
+                                var td = document.createElement("td");
+                                td.innerHTML = num;
+                                tr.appendChild(td);
+                                num++;
+
+                            }
+                    tbody1.appendChild(tr);
+                }
  
                     
-             } else if (event.keyCode == 38) {//위쪽
-                
+             } else if (event.keyCode == 38 && (row > 1)) {//위쪽
+                    
+                num = 1 
+                    tbody1.innerHTML = "";
+                    
+                    row -= 1;
+                    
+                    for (var i = 0; i < row; i++) {
+                    
+                        var tr = document.createElement("tr");
+
+                            for (var j = 0; j < col; j++) {
+
+                                var td = document.createElement("td");
+                                td.innerHTML = num;
+                                tr.appendChild(td);
+                                num++;
+
+                            }
+                    tbody1.appendChild(tr);
+                }                 
          
             } else if (event.keyCode == 40) {//아래쪽
-                
+                    
+                    num = 1 
+                    tbody1.innerHTML = "";
+                    
+                    row += 1;
+                    
+                    for (var i = 0; i < row; i++) {
+                    
+                        var tr = document.createElement("tr");
+
+                            for (var j = 0; j < col; j++) {
+
+                                var td = document.createElement("td");
+                                td.innerHTML = num;
+                                tr.appendChild(td);
+                                num++;
+
+                            }
+                    tbody1.appendChild(tr);
+                }               
 
             }
-
-        }
-
-
-        function deleteTable(num) {
+        }//function
             
+            console.log(row);
+            console.log(col);
+           
 
-            tbody1.innerHTML = "";
-
-            // for (var i = 0; i < num ; i++) {
-
-            // }
+    // }
 
 
-        }
+
 
 
     </script>
