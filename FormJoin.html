@@ -120,20 +120,17 @@
             } else {//여기가 정상적인 상황 -> 여기서 추가 업무를 수행하자.
                 
 				// tbody1.firstElementChild.children[0].innerHTML;
-                // 왜 포인터 형식으로 쓰면 안되는거지?..? -> 질문할 거리다.
                 // var temp = tbody1.firstElementChild.children[0].innerHTML; -> 이런식으로 접근하면 막힘
                 // tbody1.innerHTML += "<tr><td></td></tr>";
                 // console.log(tbody1);
                 
-                
-
                 var temp = "";
                 
                 temp += "<tr>";
                     temp += "<td>"+index+"</td>";
                     temp += "<td>"+txtname.value+"</td>";
                     temp += "<td>"+selage.value+"</td>";
-                    temp += "<td>"+"<img src = '../images/gender_" + genderSelect + ".png'>"+"</td>";
+                    temp += "<td>"+"<img src = './images/gender_" + genderSelect + ".png'>"+"</td>";
                     // temp += "<td>"+"<img src='../images/gender_m.png'>"+"</td>";
                     temp += "<td>"+txtaddress.value+"</td>";
                 temp += "</tr>";

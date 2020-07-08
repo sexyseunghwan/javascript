@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        
+	     #tbl1 {
+            /* border : 1px solid black; */
+            border-collapse: collapse;
+        } 
+
+	    #tbl1 td {
+		    width: 100px;
+		    height: 100px;
+            border : 1px solid black;
+	    }
+
+	    .disabled {
+		    background-color: #777;
+	    }
+
+	    html, body {
+		    overflow: hidden;
+	    }
+
+    </style>
+
+</head>
+<body>
+
+
+        <table id = "tbl1">
+            <tr>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "disabled"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+            </tr>
+            <tr>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+            </tr>
+            <tr>
+                <td class = "disabled"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "disabled"></td>
+                <td class = "able"></td>
+            </tr>
+            <tr>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "disabled"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+            </tr>
+            <tr>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "able"></td>
+                <td class = "disabled"></td>
+            </tr>
+
+
+        </table>
+    
+
+        <script>
+            var index = 0;
+            var td = document.getElementsByTagName("td");
+            
+            console.log(td[index].className == "able");
+
+            td[index].style.backgroundColor = "blue";
+
+            window.onkeydown = function() {
+                //  clear();
+                if (event.keyCode == 37) {//왼쪽
+                    
+                    if (index%5 != 0) {
+                        if (td[(index-1)].className == "able") {
+                            index--;
+                            td[index].style.backgroundColor = "blue";
+                            td[index+1].style.backgroundColor = "transparent";
+                        }
+    
+                    }
+                         
+                } else if (event.keyCode == 39) {//오른쪽
+                    
+                    if (index%5 != 4) {
+                        if (td[(index+1)].className == "able") {
+                        index++;
+                        td[index].style.backgroundColor = "blue";
+                        td[index-1].style.backgroundColor = "transparent";
+                        }
+                    }
+                    
+                } else if (event.keyCode == 38) {//위쪽
+                    
+                    if (index > 4) {
+                        if (td[(index-5)].className == "able") {
+                            index -= 5;
+                            td[index].style.backgroundColor = "blue";
+                            td[index+5].style.backgroundColor = "transparent";
+                        }
+                    }
+                } else if (event.keyCode == 40) {//아래쪽
+                    if (index < 20) {
+                        
+                        if (td[(index+5)].className == "able") {
+                            index += 5;
+                            td[index].style.backgroundColor = "blue";
+                            td[index-5].style.backgroundColor = "transparent";
+                        }
+                        
+                    }
+
+                }
+
+            }
+
+            
+		    // function clear() {
+			//     for (var i=0; i<td.length; i++) {
+			// 	    td[i].style.backgroundColor = "transparent";
+			//     }
+		    // }
+
+
+        </script>
+
+
+
+
+</body>
+</html>

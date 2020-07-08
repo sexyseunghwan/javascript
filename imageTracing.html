@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .img {
+            width : 150px;
+            height : 150px;
+            /* border: 1px solid red; */
+            }
+
+        #main {
+            position : absolute;
+            top : 300px;
+            left : 800px;
+            /* border : 1px solid black; */
+        }
+    </style>
+
+
+
+</head>
+<body>
+    
+    <div id = "main" style = "position : absolute; top : 300px; left : 800px"><img src="./images/m03.png" alt=""></div>
+
+    <script>
+
+        var body = document.body;
+        var main = document.getElementById("main");
+        var imgx = 800;//x좌표
+        var imgy = 300;//y좌표
+
+        window.onmousemove = function() {
+            var cx = event.clientX;
+            var cy = event.clientY;
+            console.log(cx,cy);
+
+            // console.log(event.clientX,event.clientY);
+            
+            if ((cy >= imgy) && (cy <= imgy + 150)) {
+
+                if (cx <= (imgx+150) && cx >= (imgx+75)) {
+                    imgx -= 30;
+                } else if (cx >= imgx && cx <= (imgx+75)) {
+                    imgx += 30;
+                }
+
+            } else if ((cy >= imgy) && (cy <= imgy + 150)) {//위 아래는 다시 생각해보자
+
+                
+
+
+            }
+            
+
+            main.style.top = imgy + "px";
+            main.style.left = imgx + "px";
+            //이런식으로 지정해야 된다는거지? 오케이
+
+        }
+
+        
+
+   
+
+
+
+    </script>
+
+
+
+</body>
+</html>

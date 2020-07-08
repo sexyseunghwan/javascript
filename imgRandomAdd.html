@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .img {
+            width : 150px;
+            height : 150px;
+            }
+        
+        .main {
+            position : absolute;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+    <script>
+
+
+        // console.log(parseInt((Math.random()*10)+1));
+
+        var body = document.body;
+        var list = [];
+        var count = -1;
+
+        window.addEventListener("mousedown",function(){
+
+            var img = document.createElement("img");//태그를 동적으로 생성
+            var number = parseInt((Math.random()*9)+1);//난수 생성
+            img.setAttribute("src","../images/face0"+number+".png");
+            
+            var main  = document.createElement("div");
+            main.className = "main";
+            main.appendChild(img);
+            
+            main.style.left = event.clientX - 75 + "px";
+            main.style.top = event.clientY -75 + "px";
+            
+            if (list.length < 10) {
+                count++;
+                list[count] = main;
+
+            } else {
+                
+                body.removeChild(list[0]);
+
+                //shift 필요**
+                for (var i = 1; i < 10 ; i++) {
+                    list[i-1] = list[i];
+                }
+
+                list[9] = main;
+            }
+            
+            body.appendChild(main);
+
+
+        })
+
+    </script>
+    
+</body>
+</html>
