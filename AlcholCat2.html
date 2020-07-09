@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+
+	    #tbl1 {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+	    }
+	    #tbl1 td {
+		    border: 1px solid black;
+		    width: 126px;
+		    height: 126px;
+	    }
+	    #tbl1 td img {
+		    display: block;
+		    width: 126px;
+		    height: 126px;
+		    cursor: pointer;
+	    }
+
+</style>
+</head>
+<body>
+
+    <table id="tbl1">
+		<tr>
+			<td class="cell" id = "start"><img src="./images/beer.png"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"><img src="./images/catHome.png"></td>
+		</tr>
+    </table>
+
+    <script>
+        var list = document.getElementsByClassName("cell");// 각 셀들을 객체로 잡아준다
+        var start = document.getElementById("start");
+        var timer = 0;
+        var count = 1;
+        var positive = 0;//짝수일땐 더하기 홀수일땐 빼기
+        var num  = 1;
+
+        start.onmousedown = function() {
+            timer = setInterval(function(){
+            var pic = document.createElement("img");
+            pic.setAttribute("src","./images/catty01.png");
+                // console.log(list.length);
+                
+                if (count == 5) {
+                    count = 0;
+                    num += 5;
+                    positive++;
+                }
+
+                if (positive % 2 == 0) {//숫자가 올라가는 경우
+
+                    list[num].appendChild(pic);
+                    num++;
+                    count++;
+
+
+                } else {//숫자가 내려가는 경우
+                    
+                    list[num].appendChild(pic);
+                    num--;
+                    count++;
+                }
+
+
+
+                console.log(num,count,positive);
+            
+            
+
+
+            },500);
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+    
+
+
+
+</body>
+</html>

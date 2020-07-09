@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+	    #tbl1 {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+	    }
+	    #tbl1 td {
+		    border: 1px solid black;
+		    width: 126px;
+		    height: 126px;
+	    }
+	    #tbl1 td img {
+		    display: block;
+		    width: 126px;
+		    height: 126px;
+		    cursor: pointer;
+	    }
+    </style>
+
+</head>
+<body>
+    <table id="tbl1">
+		<tr>
+			<td class="cell" id = "start"><img src="./images/beer.png"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"><img src="./images/catHome.png"></td>
+		</tr>
+    </table>
+    
+
+    <script>
+        var list = document.getElementsByClassName("cell");// 각 셀들을 객체로 잡아준다
+        var start = document.getElementById("start");
+        var timer = 0;
+        var num = 0;
+        
+
+        start.onmousedown = function() {
+           
+
+            timer = setInterval(function(){
+                var pic = document.createElement("img");
+                pic.setAttribute("src","./images/catty01.png");    
+                
+                if (num < list.length-2) {
+                    if (num == 0) {
+                        num++;
+                        list[num].appendChild(pic);
+
+                    } else {
+                        num++;
+                        list[num-1].innerText = "";
+                        list[num].appendChild(pic);
+                    }
+                } else if (num == list.length - 2) {
+                    
+                    num++
+                    list[num-1].innerText = "";
+                    list[num].innerText = "";
+                    list[num].appendChild(pic);
+                }
+
+
+
+
+            },100)
+            
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

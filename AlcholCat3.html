@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+	    #tbl1 {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+	    }
+	    #tbl1 td {
+		    border: 1px solid black;
+		    width: 126px;
+		    height: 126px;
+	    }
+	    #tbl1 td img {
+		    display: block;
+		    width: 126px;
+		    height: 126px;
+		    cursor: pointer;
+	    }
+    </style>
+
+</head>
+<body>
+    <table id="tbl1">
+		<tr>
+			<td class="cell" id = "start"><img src="./images/beer.png"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+		</tr>
+		<tr>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"><img src="./images/catHome.png"></td>
+		</tr>
+    </table>
+    
+
+    <script>
+        var list = document.getElementsByClassName("cell");// 각 셀들을 객체로 잡아준다
+        var start = document.getElementById("start");
+        var timer = 0;
+        var num = 1;
+        var count = 0;
+
+        // 벡터들
+        var v1 = [1,5];
+        var v2 = [1,-5];
+        var v3 = [-5,1,5];
+        var v4 = [5,-1];
+        var v5 = [-5,-1];
+        var v6 = [-5,-1,5];
+        var v7 = [-1,1,5];
+        var v8 = [-1,1,5,-5];
+
+        
+
+        start.onmousedown = function() {
+
+           
+            
+
+            timer = setInterval(function(){
+
+            
+            if(num != 24) {
+                clear();
+                
+                var pic = document.createElement("img");
+                pic.setAttribute("src","./images/catty01.png");
+                list[num].appendChild(pic);
+                
+               
+                console.log( v1[parseInt(Math.random()*(v1.length))]);
+                
+                
+
+                if (num % 5 == 0) {
+                    
+                    if (num == 5) {
+                        num += v1[parseInt(Math.random()*(v1.length))];
+                    } else if (num == 20) {
+                        num += v2[parseInt(Math.random()*(v2.length))];
+                    } else {
+                        num += v3[parseInt(Math.random()*(v3.length))];
+                    }
+
+                } else if (num % 5 == 4) {
+                    if (num == 4) {
+                        num += v4[parseInt(Math.random()*(v4.length))];
+                    } else if (num == 24) {
+                        num += v5[parseInt(Math.random()*(v5.length))];
+                    } else {
+                        num += v6[parseInt(Math.random()*(v6.length))];
+                    }
+
+                } else if (parseInt(num / 5) == 0) {
+                    if (num == 1) {
+                        num += v1[parseInt(Math.random()*(v1.length))];
+                    } else {
+                        num += v7[parseInt(Math.random()*(v7.length))];
+                    }
+                } else if (parseInt(num / 5) == 4) {
+                    num += v2[parseInt(Math.random()*(v2.length))];
+                } else {
+                    num += v8[parseInt(Math.random()*(v8.length))];
+                }
+
+               
+
+            } else {//마지막 경우
+                clear();
+                list[24].innerHTML="";
+                var pic = document.createElement("img");
+                pic.setAttribute("src","./images/catty01.png");
+                list[24].appendChild(pic);
+
+                clearInterval(timer);
+
+            }
+
+        },100);
+            
+    }
+
+    function clear() {
+
+        for (var i = 0; i < 25; i++) {
+
+            list[i].innerHTML = "";
+
+        }
+        
+        var pic1 = document.createElement("img");
+        pic1.setAttribute("src","./images/beer.png");
+
+        list[0].appendChild(pic1);
+        
+
+        var pic2 = document.createElement("img");
+        pic2.setAttribute("src","./images/catHome.png");
+
+        list[24].appendChild(pic2);
+
+
+    }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
