@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+	    #cat {
+		    position: absolute;
+		    left: 0px;
+		    top: 0px;
+		    transition: all 1s;
+	    }
+        input {
+            margin : 200px 500px;
+        }
+	
+    </style>
+
+</head>
+<body>
+
+    <img src="../images/catty01.png" id="cat">
+    <input type="button" value="시작" id="btn1">
+
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var cat = document.getElementById("cat");
+
+        var listX = [];
+        var listY = [];
+        var num = 0;
+
+
+        // console.log()
+
+        window.onmousemove = function() {
+
+            // console.log(event.keyCode == event.ctrlKey);
+            if (event.keyCode == 17) {
+                console.log("ha");
+            }
+
+            // if (event.ctrlKey) {
+            //     console.log(event.clientX,event.clientY);
+            // }
+
+        }//이벤트 객체라는게 지금 사실 이해가 좀 안되는거 같거등?
+
+
+        // event.keyCode랑 event.ctrlKey랑 다른게 뭐야?
+        
+        
+
+
+
+
+
+
+
+    //    window.onkeydown = function() {
+    //         // console.log(event.keyCode);
+    //         listX = [];
+    //         listY = [];
+    //         num = 0;
+            
+    //         if(event.keyCode == 17) {
+                
+                
+
+
+
+
+
+
+
+    //             // window.onmousemove = function() {
+    //             //     console.log(event.clientX,event.clientY);
+    //             //     listX[num] = event.clientX;
+    //             //     listY[num] = event.clientY;
+    //             //     num++;
+                    
+    //             // }
+    //         }
+    //     }
+
+
+        
+
+
+
+
+
+        btn1.onmousedown = function() {
+
+            // cat.style.transform = "translate(" + listX[i] + ",px" + listY[i] + "px)";
+            // cat.style.transform = "translate(10px,30px)";
+
+            for (var i = 0; i <= num; i++) {
+
+                cat.style.transform = "translate(" + listX[i] + "px," + listY[i] + "px)";
+
+            }
+
+
+        }
+
+
+
+
+
+
+    </script>
+
+
+    
+
+
+
+
+</body>
+</html>

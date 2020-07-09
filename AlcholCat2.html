@@ -22,6 +22,9 @@
 		    cursor: pointer;
 	    }
 
+		
+		
+
 </style>
 </head>
 <body>
@@ -65,59 +68,87 @@
     </table>
 
     <script>
-        var list = document.getElementsByClassName("cell");// 각 셀들을 객체로 잡아준다
+        var list = document.getElementsByClassName("cell");// 각 셀들을 객체로 잡아준다 -> 각 객체가 리스트 내에 존재함.
         var start = document.getElementById("start");
-        var timer = 0;
+        
+		var timer = 0;
         var count = 1;
         var positive = 0;//짝수일땐 더하기 홀수일땐 빼기
         var num  = 1;
 
         start.onmousedown = function() {
-            timer = setInterval(function(){
-            var pic = document.createElement("img");
-            pic.setAttribute("src","./images/catty01.png");
-                // console.log(list.length);
-                
-                if (count == 5) {
-                    count = 0;
-                    num += 5;
-                    positive++;
-                }
+            
+			// console.log(list[24]);
+			
+			timer = setInterval(function(){//타이머 설정
+            	var pic = document.createElement("img");
+            	pic.setAttribute("src","./images/catty01.png");//사진 객체 생성
+				clear();
+				
+				if (num != 24) {
+					
+                	if (count == 5) {
+                    	count = 0;
+						if (positive % 2 == 0) {
+	                    	num += 4;
+						} else {
+	                    	num += 6;
+						}
+                    	positive++;
+                	} 
 
-                if (positive % 2 == 0) {//숫자가 올라가는 경우
+                	if (positive % 2 == 0) {//숫자가 올라가는 경우
 
-                    list[num].appendChild(pic);
-                    num++;
-                    count++;
+                    	list[num].appendChild(pic);
+                    	num++;
+                    	count++;
 
 
-                } else {//숫자가 내려가는 경우
+                	} else {//숫자가 내려가는 경우
                     
-                    list[num].appendChild(pic);
-                    num--;
-                    count++;
-                }
+                    	list[num].appendChild(pic);
+                    	num--;
+                    	count++;
+                	}
+
+					} else {
+
+						list[list.length - 1].innerHTML = "";
+						list[list.length - 1].appendChild(pic);
+						clearInterval(timer);
+						
+
+					}
+
+            },100);
 
 
 
-                console.log(num,count,positive);
-            
-            
+			    function clear() {
 
+        			for (var i = 0; i < list.length; i++) {
 
-            },500);
+            			list[i].innerHTML = "";
+
+        			}
+        
+        			var pic1 = document.createElement("img");
+        			pic1.setAttribute("src","./images/beer.png");
+
+        			list[0].appendChild(pic1);
+        
+
+        			var pic2 = document.createElement("img");
+        			pic2.setAttribute("src","./images/catHome.png");
+
+        			list[list.length - 1].appendChild(pic2);
+
+    			}
 
 
 
 
         }
-
-
-
-
-
-
-
 
     </script>
     
