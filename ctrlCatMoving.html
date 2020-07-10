@@ -11,7 +11,7 @@
 		    position: absolute;
 		    left: 0px;
 		    top: 0px;
-		    transition: all 1s;
+		    /* transition: all 1s; */
 	    }
         input {
             margin : 200px 500px;
@@ -32,80 +32,52 @@
         var listX = [];
         var listY = [];
         var num = 0;
-
+        var timer = 0;
 
         // console.log()
 
+
         window.onmousemove = function() {
-
-            // console.log(event.keyCode == event.ctrlKey);
-            if (event.keyCode == 17) {
-                console.log("ha");
+        
+            if (event.ctrlKey) {
+                console.log(event.clientX,event.clientY);
+                listX[num] = event.clientX;
+                listY[num] = event.clientY;
+                num++;
             }
 
-            // if (event.ctrlKey) {
-            //     console.log(event.clientX,event.clientY);
-            // }
+        }//onmousemove
 
-        }//이벤트 객체라는게 지금 사실 이해가 좀 안되는거 같거등?
+        var count = 0;
 
+        btn1.onclick = function() {
+            console.log(listX,listY);
 
-        // event.keyCode랑 event.ctrlKey랑 다른게 뭐야?
-        
-        
-
-
-
-
-
-
-
-    //    window.onkeydown = function() {
-    //         // console.log(event.keyCode);
-    //         listX = [];
-    //         listY = [];
-    //         num = 0;
-            
-    //         if(event.keyCode == 17) {
+            timer = setInterval(function(){
                 
+                // cat = document.getElementById("cat");
                 
+                cat.style.left = listX[count] - 65  + "px";
+                cat.style.top = listY[count] - 65 + "px";
+                
+                count++;
 
+                if(count == listX.length) {
+                    clearInterval(timer);
+                }
 
-
-
-
-
-
-    //             // window.onmousemove = function() {
-    //             //     console.log(event.clientX,event.clientY);
-    //             //     listX[num] = event.clientX;
-    //             //     listY[num] = event.clientY;
-    //             //     num++;
-                    
-    //             // }
-    //         }
-    //     }
-
-
-        
-
-
-
-
-
-        btn1.onmousedown = function() {
-
-            // cat.style.transform = "translate(" + listX[i] + ",px" + listY[i] + "px)";
-            // cat.style.transform = "translate(10px,30px)";
-
-            for (var i = 0; i <= num; i++) {
-
-                cat.style.transform = "translate(" + listX[i] + "px," + listY[i] + "px)";
-
-            }
-
+            },10);
 
         }
+
+        
+
+        
+
+        
+
+
+        
 
 
 

@@ -32,40 +32,40 @@
 
         var body = document.body;
         var main = document.getElementById("main");
-        var imgx = 800;//x좌표
-        var imgy = 300;//y좌표
+        var dx = 800;//이미지 x좌표
+        var dy = 300;//이미지 y좌표
 
         window.onmousemove = function() {
             var cx = event.clientX;
             var cy = event.clientY;
-            console.log(cx,cy);
-
-            // console.log(event.clientX,event.clientY);
+            console.log(cx,cy);     
+            console.log((cy-dy) / (dx + 130 - cx));
             
-            if ((cy >= imgy) && (cy <= imgy + 150)) {
 
-                if (cx <= (imgx+150) && cx >= (imgx+75)) {
-                    imgx -= 30;
-                } else if (cx >= imgx && cx <= (imgx+75)) {
-                    imgx += 30;
-                }
-
-            } else if ((cy >= imgy) && (cy <= imgy + 150)) {//위 아래는 다시 생각해보자
-
-                
-
-
+            if (((cx >= dx) && (cx <= dx+65)) && (((cy-dy)/(cx-dx) >= 0) && ((cy-dy)/(cx-dx) <= 1))) {
+                dy += 30;
+            } else if (((cx >= dx + 65) && (cx <= dx + 130))  && (((dy-cy)/(dx+150-cx) >= -1) && ((dy-cy)/(dx+150-cx) <= 0))) {
+                dy += 30;
+            } else if (((cy >= dy) && (cy <= dy + 65)) && ((cy-dy)/(cx - dx) >= 1)) {
+                dx += 30;
+            } else if ( ((cy >= dy + 65) && (cy <= dy + 130)) && ((cy-dy-130)/(cx-dx) <= -1)) {
+                dx += 30;
+            } else if (((cx >= dx) && (cx <= dx+65)) && (((cy-dy-130)/(cx-dx) >= -1) && ((cy-dy-130)/(cx-dx) <= 0))) {
+                dy -= 30;
+            } else if ( ((cx >= dx + 65) && (cx <= dx + 130)) && ( ((dy + 130 - cy)/(dx + 130 - cx) >= 0) && ((dy + 130 - cy)/(dx + 130 - cx) <= 1))) {
+                dy -= 30;
+            } else if ( ((cy >= dy + 65) && (cy <= dy + 130)) && (((dy + 130 - cy)/(dx+130 -cx))>=1)) {
+                dx -= 30;
+            } else if ( ((cy >= dy) && (cy <= dy + 65)) && (((dy - cy)/(dx + 130 - cx)) <= -1)) {
+                dx -= 30;
             }
             
-            main.style.top = imgy + "px";
-            main.style.left = imgx + "px";
+            
+            
+            main.style.top = dy + "px";
+            main.style.left = dx + "px";
                
         }
-
-        
-
-   
-
 
 
     </script>
