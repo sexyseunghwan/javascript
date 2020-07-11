@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    	<style>
+
+		    body { margin-bottom: 300px; }
+		    fieldset { width: 200px; border: 1px solid gray; }
+		    fieldset > div { margin: 5px; }
+
+		    #tbl1 { border: 1px solid gray; 
+			    border-collapse: collapse;
+			    margin: 20px 0px; }
+		
+		    #tbl1 td {
+			    border: 1px solid gray;
+			    width: 60px;
+			    height: 45px;
+		    }
+
+
+	    </style>
+</head>
+<body>
+	<fieldset>
+		<legend>입력</legend>
+		<div>색상코드: <input type="color" id="color"></div>
+        <div>색상명: <input type="text" id="txtName" size="12" autocomplete="off"></div>
+        <input type="button" value = "색상추가" id = "colorAdd">
+	</fieldset>
+
+   
+
+    <table id="tbl1">
+		<thead>
+			<tr>
+				<th>색상명</th>
+				<th>보기</th>
+			</tr>
+		</thead>
+		<tbody id="tbody1">
+			<tr>
+				<td>토마토</td>
+				<td bgcolor="tomato">#FF6347</td>
+			</tr>
+			<tr>
+				<td>골드</td>
+				<td bgcolor="gold">#FFD700</td>
+			</tr>
+		</tbody>
+    </table>
+    
+    
+    
+
+    <script>
+
+        var tbody1 = document.getElementById("tbody1");//테이블 바디
+        var colorAdd = document.getElementById("colorAdd");//색추가 버튼
+        var color = document.getElementById("color");//색에 대한 rgb 값
+        var txtName = document.getElementById("txtName");//사용자가 넣은 색이름
+
+
+        colorAdd.onclick = function() {
+
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            
+            td1.innerText = txtName.value;
+            
+            console.log(color.value);
+
+            td2.bgColor = color.value;
+            td2.innerText = color.value;
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+
+            tbody1.appendChild(tr);
+
+        } 
+        
+
+
+
+    </script>
+
+
+
+</body>
+</html>
