@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+	    #main, .main {
+		    position: static;
+	    }
+	    .cat { position: absolute; left:0px; top: 0px;}
+    </style>
+
+    
+</head>
+<body>
+
+    <img src="../images/catty01.png" class = "cat">
+    <img src="../images/catty02.png" class = "cat">
+    <img src="../images/catty03.png" class = "cat">
+    <img src="../images/catty04.png" class = "cat">
+    <img src="../images/catty05.png" class = "cat">
+    <img src="../images/catty06.png" class = "cat">
+    <img src="../images/catty07.png" class = "cat">
+    <img src="../images/catty08.png" class = "cat">
+    <img src="../images/catty09.png" class = "cat">
+    <img src="../images/catty10.png" class = "cat">
+    <img src="../images/catty11.png" class = "cat">
+    <img src="../images/catty12.png" class = "cat">
+    <img src="../images/catty13.png" class = "cat">
+    <img src="../images/catty14.png" class = "cat">
+    <img src="../images/catty15.png" class = "cat">
+    <img src="../images/catty16.png" class = "cat">
+    <img src="../images/catty17.png" class = "cat">
+    <img src="../images/catty18.png" class = "cat">
+    <img src="../images/catty19.png" class = "cat">
+    <img src="../images/catty20.png" class = "cat">
+
+    <script>
+
+        var catlist = document.getElementsByClassName("cat");
+        var listX = [];
+        var listY = [];
+
+        window.onmousemove = function() {
+
+            listX.push(event.clientX);
+            listY.push(event.clientY);
+
+
+            if (listX.length > catlist.length) {
+                listX.shift();
+                listY.shift();
+            }
+            
+            for (var i = 0; i < catlist.length; i++) {
+                    
+                catlist[i].style.left = listX[i] - 65 + "px";
+                catlist[i].style.top = listY[i] - 65 + "px";
+
+            }
+        }
+
+
+    </script>
+    
+
+
+
+
+
+</body>
+</html>
