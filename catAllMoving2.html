@@ -6,71 +6,62 @@
 	<title>Document</title>
 
 	<style>
+		
+		#main {
+			border : 1px solid black;
+			width : 1000px;
+			height : 800px;
+			margin-top : 300px;
+			margin-left : 500px;
+			position : relative;
+			overflow: hidden;
+
+		}
 
 		.pic {
 			position : absolute;
-			/* display: none; */
-			/* display: block; */
-
 		}
-		#main {
-			border : 10px solid black;
-			margin-top : 200px;
-			margin-left : 500px;
-			width : 1000px;
-			height : 800px;
-			/* overflow: hidden; */
-			overflow: hidden; 
-			position: relative;
-			/* position: static; */
+		
 
-			
-
-		}
-
-		body {
-			/* background-color: blue; */
-			z-index: 10;
-
-		}
 
 	</style>
+
 
 </head>
 <body>
 
 	<div id = "main">
-		<img src="./images/face01.png" class = "pic">
-		<img src="./images/face02.png" class = "pic">
-		<img src="./images/face03.png" class = "pic">
-		<img src="./images/face04.png" class = "pic">
-		<img src="./images/face05.png" class = "pic">
-		<img src="./images/face06.png" class = "pic">
-		<img src="./images/face07.png" class = "pic">
-		<img src="./images/face08.png" class = "pic">
-		<img src="./images/face09.png" class = "pic">
-		<img src="./images/face10.png" class = "pic">
-		<img src="./images/face11.png" class = "pic">
-		<img src="./images/face12.png" class = "pic">
-		<img src="./images/face13.png" class = "pic">
-		<img src="./images/face14.png" class = "pic">
-		<img src="./images/face15.png" class = "pic">	
-		<img src="./images/face16.png" class = "pic">		
-		<img src="./images/face18.png" class = "pic">	
-		<img src="./images/face19.png" class = "pic">	
-		<img src="./images/face20.png" class = "pic">
-		<img src="./images/face21.png" class = "pic">
+		<img src="./images/catty01.png" class = "pic">
+		<img src="./images/catty02.png" class = "pic">
+		<img src="./images/catty03.png" class = "pic">
+		<img src="./images/catty04.png" class = "pic">
+		<img src="./images/catty05.png" class = "pic">
+		<img src="./images/catty06.png" class = "pic">
+		<img src="./images/catty07.png" class = "pic">
+		<img src="./images/catty08.png" class = "pic">
+		<img src="./images/catty09.png" class = "pic">
+		<img src="./images/catty10.png" class = "pic">
+		<img src="./images/catty11.png" class = "pic">
+		<img src="./images/catty12.png" class = "pic">
+		<img src="./images/catty13.png" class = "pic">
+		<img src="./images/catty14.png" class = "pic">
+		<img src="./images/catty15.png" class = "pic">	
+		<img src="./images/catty16.png" class = "pic">		
+		<img src="./images/catty17.png" class = "pic">	
+		<img src="./images/catty18.png" class = "pic">	
+		<img src="./images/catty19.png" class = "pic">
+		<img src="./images/catty20.png" class = "pic">
 	</div>
 
-
 	<script>
+		
 		var main = document.getElementById("main");
 		var images = document.getElementsByClassName("pic");
 		var listX = [];
 		var listY = [];
 		// var zindex = 0;
 
-		window.onmousemove = function() {//여기를 좀 
+		window.onmousemove = function() {
 
 			listX.push(event.clientX);
 			listY.push(event.clientY);
@@ -91,12 +82,11 @@
 		}
 
 		
-		
+		//왜 그렇게 되는건지 생각좀 해보자 친구야
 		
 
 		
 	</script>
-	
 
 </body>
 </html>

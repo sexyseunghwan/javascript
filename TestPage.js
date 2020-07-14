@@ -2,18 +2,12 @@
 
 
 
+// var num = 24;
+// var hexString = num.toString(16);
+// console.log(hexString)
 
 
-
-
-var list = [1, 2, 3, 4];
-
-list[4] = 10;
-
-console.log(list);
-
-
-
+console.log("asd");
 
 
 

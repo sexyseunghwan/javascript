@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+	#tbl1 {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	#tbl1 td {
+		border: 1px solid black;
+		width: 120px;
+		height: 120px;
+	}
+	#tbl1 td img {
+		display: block;
+		width: 120px;
+		height: 120px;
+	}
+</style>
+
+</head>
+<body>
+<table id="tbl1">
+		<tr>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+		</tr>
+		<tr>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+		</tr>
+		<tr>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+		</tr>
+		<tr>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+		</tr>
+		<tr>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+			<td class="cell" data-color="255"></td>
+		</tr>
+    </table>
+    
+
+    <script>
+
+        // 11번이 최고로 찍을 수 있는 발자국이 된다.
+		// dog-foot.png
+        var cell = document.getElementsByClassName("cell");
+		
+		for (var i =0; i < cell.length; i++) {
+			
+			cell[i].onmousedown = function() {
+				
+				var obj = event.srcElement;
+
+
+				if (obj.nodeName == "TD") {
+					
+					var objColor = obj.dataset["color"];
+					
+					var pic = document.createElement("img");
+					pic.setAttribute("src","./images/dog-foot.png");
+					
+					obj.appendChild(pic);
+
+
+				} else if (obj.nodeName == "IMG") {
+					var parent = obj.parentNode;
+					var objColor = parent.dataset["color"];
+					console.log(objColor);
+					
+					if (objColor >= 25) {
+						console.log("여기들어와");
+						// console.log(obj);
+						// console.log(obj.parentNode);
+	
+						parent.dataset["color"] -= 20;
+						// console.log(obj.parentNode.dataset["color"]);
+						// console.log(parent.dataset["color"]);
+						
+						var r = parent.dataset["color"];
+						var g = parent.dataset["color"];
+						var b = parent.dataset["color"];
+
+						console.log(r,g,b);
+
+						console.log(obj);
+						obj.style["background-color"] = "rgb(" + r+ "," + g + "," + b +")";
+
+						console.log(obj.style["background-color"]);
+
+
+					}
+				}
+			};//onmousedown()
+
+			
+
+
+			// cell[i].onmouseup = function() {
+			// 	console.log("마우스 뗌");
+
+			// 	var obj = event.srcElement;
+			// 	console.log(obj);
+			// 	// console.log(obj.dataset["color"]);
+				
+			// 	if(obj.dataset["color"] >= 45) {
+			// 		obj.dataset["color"] = obj.dataset["color"] - 20;
+			// 		console.log("내가왔다");
+			// 		// obj = null;
+					
+					
+			// 	} 
+
+
+			// }
+
+
+
+		}
+		
+		
+
+        
+
+
+
+    </script>
+    
+</body>
+</html>
