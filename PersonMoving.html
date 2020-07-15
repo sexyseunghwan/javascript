@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+
+	<style>
+	#man1, #man2, #man3, #man4  {
+		width: 128px;
+		height: 128px;
+		background-image: url("../images/work.png");
+		margin-bottom: 20px;
+		/* border : 1px solid black; */
+	}
+	/* #cage {
+		border: 0px solid black;
+		width: 800px;
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+	#cage img {
+		position: absolute;
+		top: 6px;
+		transition: all .2s;
+		display: none;
+	}
+	#cage img:first-child {
+		left: -108px;
+	}
+	#cage img:last-child {
+		left: 780px;
+	} */
+</style>    
+</head>
+<body>
+
+	<div id="man1"></div>
+	<div id="man2"></div>
+	<div id="man3"></div>
+	<div id="man4"></div>
+	<!-- <div id="cage">
+		<img src="../images/stop-left.png" id="left">
+		<div id="man4"></div>
+		<img src="../images/stop-right.png" id="right">
+    </div> -->
+	
+
+    <script>
+        
+		
+		var man1 = document.getElementById("man1");
+		var man2 = document.getElementById("man2");
+		var man3 = document.getElementById("man3");
+
+		// var x1,y1 = 0;
+		var x1 = 0;
+		var y1 = 0;
+		var timer1 = 0;
+		var timer2 = 0;
+		var go1 = false;
+		var go2 = false;
+		var go4 = false;
+		var stop = true;
+
+		timer1 = setInterval(function(){
+
+			man1.style.backgroundPosition = x1 + "px " + y1 + "px";
+			man2.style.backgroundPosition = x1 + "px " + y1 + "px";
+			man4.style.backgroundPosition = x1 + "px " + y1 + "px";
+
+
+			man4.onclick = function() {
+
+				if (!go4) {
+					go4 = true;
+				} 
+			}
+
+			if (go4) {
+
+
+			}
+
+
+			man2.onclick = function() {
+				if (!go1) {
+					go1 = true;//다시 클릭해도 처음으로 가지 않게 하기 위한 작업
+				}
+			};
+
+
+			if (go1) {
+				man2.style.transform = "translate(" + go1 + "px,0px)";
+				go1+=10;//속도를 지정해줌
+			}
+
+
+
+			x1 -= 128;
+
+			if (x1 <= -(128*4)) {//화면단을 넘기는 코드 -> 사진을 계속 넘겨야 움직이는 것처럼 보이므로
+				x1 = 0;
+				y1 -= 128;
+
+				if (y1 <= -(128*2)) {
+					y1 = 0;
+				}
+				
+			}
+		},100);
+
+		
+		timer2 = setInterval(function(){//man3의 움직임을 통제하려는 코드
+
+			man3.onclick = function() {
+
+				if(stop == false && go2 == false) {
+					go2 = true;
+				}
+
+				if (stop) {
+					stop = false;
+				}
+
+			};
+			
+
+			if (!stop) {
+				man3.style.backgroundPosition = x1 + "px " + y1 + "px";
+			}
+
+			if (go2) {
+				man3.style.transform = "translate(" + go2 + "px,0px)";
+				go2 += 10;
+			}
+
+		},100);
+		
+		
+		
+		// rotateX rotateY
+		
+
+				
+
+    </script>
+    
+    
+</body>
+</html>

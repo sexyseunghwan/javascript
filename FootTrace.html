@@ -88,53 +88,61 @@
         // 11번이 최고로 찍을 수 있는 발자국이 된다.
 		// dog-foot.png
         var cell = document.getElementsByClassName("cell");
-		
-		for (var i =0; i < cell.length; i++) {
+
+
+
+		for (var i = 0; i < cell.length; i++) {
 			
-			cell[i].onmousedown = function() {
+		}
+
+
+		
+		// for (var i =0; i < cell.length; i++) {
+			
+		// 	cell[i].onmousedown = function() {
 				
-				var obj = event.srcElement;
+		// 		var obj = event.srcElement;
 
 
-				if (obj.nodeName == "TD") {
+		// 		if (obj.nodeName == "TD") {
 					
-					var objColor = obj.dataset["color"];
+		// 			var objColor = obj.dataset["color"];
 					
-					var pic = document.createElement("img");
-					pic.setAttribute("src","./images/dog-foot.png");
+		// 			var pic = document.createElement("img");
+		// 			pic.setAttribute("src","./images/dog-foot.png");
 					
-					obj.appendChild(pic);
+		// 			obj.appendChild(pic);
 
 
-				} else if (obj.nodeName == "IMG") {
-					var parent = obj.parentNode;
-					var objColor = parent.dataset["color"];
-					console.log(objColor);
+		// 		} else if (obj.nodeName == "IMG") {
+		// 			var parent = obj.parentNode;
+		// 			var objColor = parent.dataset["color"];
+		// 			console.log(objColor);
 					
-					if (objColor >= 25) {
-						console.log("여기들어와");
-						// console.log(obj);
-						// console.log(obj.parentNode);
+		// 			if (objColor >= 25) {
+		// 				console.log("여기들어와");
+		// 				// console.log(obj);
+		// 				// console.log(obj.parentNode);
 	
-						parent.dataset["color"] -= 20;
-						// console.log(obj.parentNode.dataset["color"]);
-						// console.log(parent.dataset["color"]);
+		// 				parent.dataset["color"] -= 20;
+		// 				// console.log(obj.parentNode.dataset["color"]);
+		// 				// console.log(parent.dataset["color"]);
 						
-						var r = parent.dataset["color"];
-						var g = parent.dataset["color"];
-						var b = parent.dataset["color"];
+		// 				var r = parent.dataset["color"];
+		// 				var g = parent.dataset["color"];
+		// 				var b = parent.dataset["color"];
 
-						console.log(r,g,b);
+		// 				console.log(r,g,b);
 
-						console.log(obj);
-						obj.style["background-color"] = "rgb(" + r+ "," + g + "," + b +")";
+		// 				console.log(obj);
+		// 				obj.style["background-color"] = "rgb(" + r+ "," + g + "," + b +")";
 
-						console.log(obj.style["background-color"]);
+		// 				console.log(obj.style["background-color"]);
 
 
-					}
-				}
-			};//onmousedown()
+		// 			}
+		// 		}
+		// 	};//onmousedown()
 
 			
 
