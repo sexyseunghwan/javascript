@@ -6,80 +6,75 @@
 	<title>Document</title>
 
 	<style>
-
-		.pic {
-			position : absolute;
-
-		}
-		#main {
-			border : 10px solid black;
-			margin-top : 200px;
-			margin-left : 200px;
-			width : 900px;
-			height : 800px;
-			background-color: white;
-			visibility: visible;
-
-		}
-
-		/* zindex?! z */
+	#man1, #man2, #man3, #man4  {
+		width: 128px;
+		height: 128px;
+		background-image: url("../images/work.png");
+		margin-bottom: 20px;
+		/* border : 1px solid black; */
+	}
 
 	</style>
 
 </head>
 <body>
 
-	<img src="./images/face01.png" class = "pic">
-	<img src="./images/face02.png" class = "pic">
-	<img src="./images/face03.png" class = "pic">
-	<img src="./images/face04.png" class = "pic">
-	<img src="./images/face05.png" class = "pic">
-	<img src="./images/face06.png" class = "pic">
-	<img src="./images/face07.png" class = "pic">
-	<img src="./images/face08.png" class = "pic">
-	<img src="./images/face09.png" class = "pic">
-	<img src="./images/face10.png" class = "pic">
-	<img src="./images/face11.png" class = "pic">
-	<img src="./images/face12.png" class = "pic">
-	<img src="./images/face13.png" class = "pic">
-	<img src="./images/face14.png" class = "pic">
-	<img src="./images/face15.png" class = "pic">	
-	<img src="./images/face16.png" class = "pic">		
-	<img src="./images/face18.png" class = "pic">	
-	<img src="./images/face19.png" class = "pic">	
-	<img src="./images/face20.png" class = "pic">
-	<img src="./images/face21.png" class = "pic">
-
+	<div id="man3"></div>
+	<div id="man3"></div>
 
 
 	<script>
 
-		var images = document.getElementsByClassName("pic");
-		var listX = [];
-		var listY = [];
-
-		window.onmousemove = function() {
-
-			listX.push(event.clientX);
-			listY.push(event.clientY);
-
-
-			if (listX.length > images.length) {
-				listX.shift();
-				listY.shift();
-			}
-
-			console.log(listX);
-			console.log(listY);
-
-			for (var i = 0; i < images.length; i++) {
-				images[i].style.top = listY[i] + "px";
-				images[i].style.left = listX[i] + "px";
-
-			}
-		}
-
+		var man3 = document.getElementById("man3");
+		var timer3 = 0;
+		var x3 = 0;
+		var y3 = 0;
+		var moveMan3 = false;
+		var goMan3 = false;
+		var man3Len = 0;
 		
+		man3.style.transform = "scale(-1,1)";
+
+		timer3 = setInterval(function(){
+
+			man3.style.backgroundPosition = x3 + "px " + y3 + "px";
+
+
+			man3.onclick = function(){
+				
+				if (!moveMan3) {//3번째 사람이 서있는경우 -> 움직이도록 바꿔준다
+					moveMan3 = true;
+				} else {//3번째 사람이 움직이고 있는경우 -> 걸어가도록 바꿔준다.
+					goMan3 = true;
+				}
+				
+			}
+			
+
+			if(moveMan3) {
+
+				//man3 의 움직임을 제어한다.
+				x3 -= 128;
+
+				if(x3 <= -(128*4)) {
+					x3 = 0;
+					y3 -= 128;
+
+					if(y3 <= -(128*2)) {
+						y3 = 0;
+					}
+				}
+			}
+
+			if(goMan3) {
+				man3.style.transform = "translate(" + man3Len + "px,0px)"
+				man3Len += 10;
+			}
+			
+		},100);//timer2
+		
+
+
 	</script>
 	
 

@@ -1,153 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	
 
 	<style>
-	#man1, #man2, #man3, #man4  {
+	#man1, #man2, #man3, #man4, #man5  {
 		width: 128px;
 		height: 128px;
 		background-image: url("../images/work.png");
 		margin-bottom: 20px;
 		/* border : 1px solid black; */
 	}
-	/* #cage {
-		border: 0px solid black;
-		width: 800px;
-		position: relative;
-		left: 0px;
-		top: 0px;
+
+	.moving {
+		position : absolute;
 	}
-	#cage img {
-		position: absolute;
-		top: 6px;
-		transition: all .2s;
-		display: none;
-	}
-	#cage img:first-child {
-		left: -108px;
-	}
-	#cage img:last-child {
-		left: 780px;
-	} */
-</style>    
+	</style>  
 </head>
 <body>
 
 	<div id="man1"></div>
 	<div id="man2"></div>
 	<div id="man3"></div>
-	<div id="man4"></div>
-	<!-- <div id="cage">
-		<img src="../images/stop-left.png" id="left">
-		<div id="man4"></div>
-		<img src="../images/stop-right.png" id="right">
-    </div> -->
-	
+	<div id="man4" style = "visibility : visible; transform: scale(1,1);" class = "moving"></div>
+	<div id="man5" style = "visibility : hidden; transform: scale(-1,1);" class = "moving"></div>
 
-    <script>
-        
-		
+
+	<script>
+		// 첫번쨰 두번째 사람들
+		var timer1 = 0;
 		var man1 = document.getElementById("man1");
 		var man2 = document.getElementById("man2");
-		var man3 = document.getElementById("man3");
+		var x12 = 0;//첫번째와 두번째 사람이 쓸 움직임 제어
+		var y12 = 0;//첫번째와 두번째 사람이 쓸 움직임 제어
+		var goMan2 = false;
+		var man2Len = 0;
 
-		// var x1,y1 = 0;
-		var x1 = 0;
-		var y1 = 0;
-		var timer1 = 0;
-		var timer2 = 0;
-		var go1 = false;
-		var go2 = false;
-		var go4 = false;
-		var stop = true;
+		// 세번쨰 사람
+		var timer3 = 0;
+		var x3 = 0;
+		var y3 = 0;
+		var man3 = document.getElementById("man3");
+		var moveMan3 = false;
+		var goMan3 = false;
+		var man3Len = 0;
+
+		//네번쨰 사람
+		var timer4 = 0;
+		var man4 = document.getElementById("man4");
+		var goMan4 = false;
+		var man4Len = 0;
+		var vector = true;
+		// var mirror = 0;
+
+		var timer5 = 0;
+		var man5 = document.getElementById("man5");
+		var goMan5 = false;
+		var man5Len = 0;
+		
+
 
 		timer1 = setInterval(function(){
 
-			man1.style.backgroundPosition = x1 + "px " + y1 + "px";
-			man2.style.backgroundPosition = x1 + "px " + y1 + "px";
-			man4.style.backgroundPosition = x1 + "px " + y1 + "px";
+			man1.style.backgroundPosition = x12 + "px " + y12 + "px";//첫번째 사람의 움직임 제어
+			man2.style.backgroundPosition = x12 + "px " + y12 + "px";//두번쨰 사람의 움직임 제어
+			man4.style.backgroundPosition = x12 + "px " + y12 + "px";//네번쨰 사람의 움직임 제어
+			man5.style.backgroundPosition = x12 + "px " + y12 + "px";//다섯번쨰 사람의 움직임 제어
+
+
+
+			//네번째 사람에 대한 제어 -> 왔다리 갔다리 -> 사실은 두사람이 있는거라고 보면 된다!
 
 
 			man4.onclick = function() {
-
-				if (!go4) {
-					go4 = true;
-				} 
-			}
-
-			if (go4) {
-
+				if(!goMan4) {//네번째 남자가 움직이기만 하는경우 -> 걷게 바꿔준다.
+					goMan4 = true;
+				}
+				if(!goMan5) {//다섯번째 남자가 움직이기만 하는경우 -> 걷게 바꿔준다.
+					goMan5 = true;
+				}
 
 			}
+			
+			if(goMan4) {//걷는경우에
+				
+				if(man4Len == 0) {
+					vector = true;
+					man4.style.visibility = "visible";
+					man5.style.visibility = "hidden";
+				} else if (man4Len == 500) {
+					vector = false;
+					man4.style.visibility = "hidden";
+					man5.style.visibility = "visible";
+				}
+			
+					if (vector) {
+						man4.style.transform = "translate(" + man4Len + "px,0px) scale(1,1)";
+						man5.style.transform = "translate(" + man4Len + "px,0px) scale(-1,1)";
+						man4Len += 10;//거리지정
+					} else {
+						man4.style.transform = "translate(" + man4Len + "px,0px) scale(1,1)";
+						man5.style.transform = "translate(" + man4Len + "px,0px) scale(-1,1)";
+						man4Len -= 10;//거리지정
+				}
 
 
+			}
+
+
+
+
+			//두번쨰 사람은 클릭을 하게되면 앞으로 나아가야 한다! -> 두번쨰 사람에 대한 제어
 			man2.onclick = function() {
-				if (!go1) {
-					go1 = true;//다시 클릭해도 처음으로 가지 않게 하기 위한 작업
+				
+				if(!goMan2) {//두번쨰 남자가 서있는 경우
+					goMan2 = true;//걸어가는 형식으로 바꿔준다.
 				}
 			};
 
-
-			if (go1) {
-				man2.style.transform = "translate(" + go1 + "px,0px)";
-				go1+=10;//속도를 지정해줌
+			if (goMan2) {
+				
+				man2.style.transform = "translate(" + man2Len + "px,0px)";
+			
+				man2Len+=10;//거리지정
 			}
 
+			
+			//화면을 제어해주는 역할! -> 그림을 움직이게 한다.
+			x12 -= 128;
+
+			if (x12 <= -(128*4)) {
+				x12 = 0;
+				y12 -= 128;
+				if (y12 <= -(128*2)) {
+					y12 = 0;
+				}
+			}
+
+		},70);//timer1
 
 
-			x1 -= 128;
+		timer2 = setInterval(function(){
 
-			if (x1 <= -(128*4)) {//화면단을 넘기는 코드 -> 사진을 계속 넘겨야 움직이는 것처럼 보이므로
-				x1 = 0;
-				y1 -= 128;
+			man3.style.backgroundPosition = x3 + "px " + y3 + "px";
 
-				if (y1 <= -(128*2)) {
-					y1 = 0;
+
+			man3.onclick = function(){
+				
+				if (!moveMan3) {//3번째 사람이 서있는경우 -> 움직이도록 바꿔준다
+					moveMan3 = true;
+				} else {//3번째 사람이 움직이고 있는경우 -> 걸어가도록 바꿔준다.
+					goMan3 = true;
 				}
 				
 			}
-		},100);
-
-		
-		timer2 = setInterval(function(){//man3의 움직임을 통제하려는 코드
-
-			man3.onclick = function() {
-
-				if(stop == false && go2 == false) {
-					go2 = true;
-				}
-
-				if (stop) {
-					stop = false;
-				}
-
-			};
 			
 
-			if (!stop) {
-				man3.style.backgroundPosition = x1 + "px " + y1 + "px";
+			if(moveMan3) {
+
+				//man3 의 움직임을 제어한다.
+				x3 -= 128;
+
+				if(x3 <= -(128*4)) {
+					x3 = 0;
+					y3 -= 128;
+
+					if(y3 <= -(128*2)) {
+						y3 = 0;
+					}
+				}
 			}
 
-			if (go2) {
-				man3.style.transform = "translate(" + go2 + "px,0px)";
-				go2 += 10;
+			if(goMan3) {
+				man3.style.transform = "translate(" + man3Len + "px,0px)"
+				man3Len += 10;
 			}
+			
+		},100);//timer2
 
-		},100);
-		
-		
-		
-		// rotateX rotateY
+
+
+
+
 		
 
-				
 
-    </script>
-    
-    
+
+
+	</script>
+
+
+
 </body>
 </html>
