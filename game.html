@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    
+    <style>
+
+        #main {
+            border : 3px solid black;
+            margin : 100px auto;
+            width : 2000px;
+            height: 1100px;
+        }
+
+        #target {
+            position : relative;
+            border : 2px solid red;
+            border-radius: 100%;
+            width : 100px;
+            height : 100px;
+        }
+
+        #spot {
+            position : relative;
+            border : 2px solid red;
+            border-radius: 100%;
+            width : 10px;
+            height : 10px;
+            top : 45px;
+            left : 44px;
+        }
+
+        
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div id = "main">
+        <div id = target>
+            <div id = "spot"></div>
+        </div>
+    </div>
+
+
+    <script>
+
+         $("#main").mousemove(function(){
+            console.log("x : " + event.offsetX);
+            console.log("y : " + event.offsetY);
+            console.log("----------------------------");
+            
+
+            
+
+         })
+
+    </script>
+
+</body>
+</html>
